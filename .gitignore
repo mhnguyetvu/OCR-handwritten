@@ -18,6 +18,7 @@ build/
 # VS Code
 .vscode/
 
+weights/vgg_transformer.pth
 # Logs
 *.log
 logs/
