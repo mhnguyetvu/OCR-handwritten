@@ -4,4 +4,3 @@
 2025-10-06 17:27:16 - ocr_pipeline - INFO - Saved JSON to results.json
 2025-10-06 17:27:16 - ocr_pipeline - INFO - Runtime: 15.31s
 
-git remote set-url origin https://mhnguyetvu:@github.com/mhnguyetvu/OCR-handwritten.git

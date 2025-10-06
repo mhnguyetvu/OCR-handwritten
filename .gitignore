@@ -28,7 +28,7 @@ logs/
 *.xls
 *.xlsx
 data/
-weights/
+weights
 
 # Environment
 .env
