@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Data and weights
+*.csv
+*.tsv
+*.xls
+*.xlsx
+data/
+weights/
+
+# Environment
+.env
+.venv/
+venv/
+ENV/
+
+# MacOS
+.DS_Store
+
+# Others
+*.bak
+*.swp
+*.tmp
+
+# Ignore pip wheel
+*.whl
