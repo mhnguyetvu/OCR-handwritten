@@ -1,0 +1,5 @@
+2025-10-06 17:27:03 - ocr_pipeline - INFO - Running PaddleOCR on /Users/mhnguyetvu/workspace/OCR-handwrite/data/Appointment Form.jpg
+2025-10-06 17:27:14 - ocr_pipeline - INFO - PaddleOCR returned 37 text lines
+2025-10-06 17:27:16 - ocr_pipeline - INFO - Extracted 0 polygon boxes
+2025-10-06 17:27:16 - ocr_pipeline - INFO - Saved JSON to results.json
+2025-10-06 17:27:16 - ocr_pipeline - INFO - Runtime: 15.31s

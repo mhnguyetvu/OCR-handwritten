@@ -1,0 +1,6 @@
+paddleocr
+paddlepaddle
+vietocr
+opencv-python
+numpy
+protobuf=="4.25.3"s
