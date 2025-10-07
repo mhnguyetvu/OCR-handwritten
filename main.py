@@ -38,11 +38,19 @@ def main():
     ocr = init_paddle_ocr(lang=args.lang)
     logger.info("Running PaddleOCR on %s", args.image)
     result = ocr.predict(args.image)
-
+    print(result)
+    
     # 1) collect PaddleOCR recognized text lines
     lines = find_rec_texts_from_result(result)
     logger.info("PaddleOCR returned %d text lines", len(lines))
-
+    # Ghi ra file để kiểm tra các lines mà PaddleOCR predict ra
+    print("Các dòng PaddleOCR nhận diện được:")
+    for idx, line in enumerate(lines):
+        print(f"{idx+1}: {line}")
+    with open("rec_texts.txt", "w", encoding="utf-8") as f:
+        for line in lines:
+            f.write(line + "\n")
+            
     # 2) optionally run VietOCR over detected boxes for better recognition
     texts_from_viet = []
     if not args.no_vietocr:

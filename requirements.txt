@@ -2,5 +2,6 @@ paddleocr
 paddlepaddle
 vietocr
 opencv-python
-numpy
-protobuf=="4.25.3"s
+# numpy<1.20
+protobuf==4.25.3
+torch

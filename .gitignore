@@ -31,6 +31,26 @@ logs/
 data/
 weights
 
+# Ignore common data files
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.tif
+*.tiff
+*.zip
+*.tar
+*.gz
+*.7z
+*.txt
+*.mdb
+*.json
+*.xml
+*.pdf
+sample/
+data_line/
+
 # Environment
 .env
 .venv/
