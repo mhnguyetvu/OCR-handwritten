@@ -7,6 +7,8 @@ import sys
 import os
 import time
 from datetime import datetime
+import warnings
+warnings.filterwarnings("ignore")
 
 # Add parent directory to path to import paddle_det and paddle_reg
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -39,13 +41,11 @@ def run_detection_and_recognition(img_path, output_json_path=None):
         use_textline_orientation=False,
     )
     ocr_init_time = time.time() - ocr_init_start
-    print(f"PaddleOCR initialization time: {ocr_init_time:.2f} seconds")
     
     # Run detection
     predict_start = time.time()
     result = ocr.predict(img_path)
     predict_time = time.time() - predict_start
-    print(f"PaddleOCR prediction time: {predict_time:.2f} seconds")
     
     # Process results - handle OCRResult structure
     process_start = time.time()
@@ -85,8 +85,6 @@ def run_detection_and_recognition(img_path, output_json_path=None):
     process_time = time.time() - process_start
     detection_total_time = time.time() - detection_start_time
     
-    print(f"Result processing time: {process_time:.2f} seconds")
-    print(f"Detection total time: {detection_total_time:.2f} seconds")
     print(f"Detected {len(bboxes)} text regions")
     
     # Prepare detection data
@@ -110,17 +108,12 @@ def run_detection_and_recognition(img_path, output_json_path=None):
     
     recognizer_init_start = time.time()
     recognizer = PaddleRecognition(device='cpu')
-    recognizer_init_time = time.time() - recognizer_init_start
-    print(f"VietOCR initialization time: {recognizer_init_time:.2f} seconds")
     
     recognize_start = time.time()
     texts = recognizer.recognize_from_detection(detection_data)
     recognize_time = time.time() - recognize_start
     recognition_total_time = time.time() - recognition_start_time
-    
-    print(f"Text recognition time: {recognize_time:.2f} seconds")
-    print(f"Recognition total time: {recognition_total_time:.2f} seconds")
-    
+  
     # Step 3: Extract fields
     print("\n==== STEP 3: FIELD EXTRACTION ====")
     extraction_start_time = time.time()
@@ -135,16 +128,7 @@ def run_detection_and_recognition(img_path, output_json_path=None):
     seal_time = time.time() - seal_start
     
     extraction_total_time = time.time() - extraction_start_time
-    print(f"Field extraction time: {extraction_total_time:.2f} seconds")
-    print(f"Seal detection time: {seal_time:.2f} seconds")
-    
-    # Display results
-    print("\n==== OCR RAW TEXT ====")
-    print(raw_text)
-    
-    print("\n==== JSON OUTPUT ====")
-    print(json.dumps(json_output, ensure_ascii=False, indent=2))
-    
+
     # Create final structured output according to required format
     import os
     from datetime import datetime
@@ -166,7 +150,6 @@ def run_detection_and_recognition(img_path, output_json_path=None):
     print(f"PaddleOCR prediction: {predict_time:.2f}s") 
     print(f"Result processing: {process_time:.2f}s")
     print(f"Detection total: {detection_total_time:.2f}s")
-    print(f"VietOCR initialization: {recognizer_init_time:.2f}s")
     print(f"Text recognition: {recognize_time:.2f}s")
     print(f"Recognition total: {recognition_total_time:.2f}s")
     print(f"Field extraction: {extraction_total_time:.2f}s")
@@ -176,21 +159,9 @@ def run_detection_and_recognition(img_path, output_json_path=None):
     return {
         "detection_data": detection_data,
         "raw_text": raw_text,
-        "structured_output": final_structured_output,
-        "performance": {
-            "ocr_init_time": ocr_init_time,
-            "prediction_time": predict_time,
-            "processing_time": process_time,
-            "detection_total": detection_total_time,
-            "vietocr_init_time": recognizer_init_time,
-            "recognition_time": recognize_time,
-            "recognition_total": recognition_total_time,
-            "extraction_time": extraction_total_time,
-            "seal_detection_time": seal_time,
-            "total_time": total_time
+        "structured_output": final_structured_output
         }
-    }
-
+    
 def main():
     print("Starting OCR Pipeline...")
     main_start_time = time.time()

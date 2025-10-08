@@ -74,7 +74,6 @@ class PaddleRecognition:
                 # Recognize text using VietOCR
                 text = self.detector.predict(pil_image)
                 texts.append(text)
-                print(f"Box {i+1}/{len(bboxes)}: {text}")
                 
             except Exception as e:
                 print(f"Error processing bbox {i}: {e}")
