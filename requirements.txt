@@ -1,0 +1,7 @@
+paddleocr 
+paddlepaddle
+opencv-python
+numpy
+Pillow
+vietocr
+matplotlib  
